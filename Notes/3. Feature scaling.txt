@@ -1,0 +1,5 @@
+Feature scaling is always applied to columns
+ - Normalization
+   X` = (X - Xmin) / (Xmax - Xmin) and X` is between [0; 1]
+ - Standardization
+   X` = (X - average) / Standard deviation and X` is between [-3; 3]

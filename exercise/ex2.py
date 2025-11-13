@@ -1,0 +1,35 @@
+import numpy as np
+import pandas as pd
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
+df = pd.read_csv('Data.csv')
+x = df.drop(columns = 'Purchased').to_numpy()
+y = df.iloc[:, -1].to_numpy()
+print(x)
+print(y)
+print()
+impute = SimpleImputer(missing_values = np.nan, strategy = 'mean')
+x[:, 1:3] = impute.fit_transform(x[:, 1:3])
+print(x)
+print(y)
+print()
+c_t = ColumnTransformer(transformers = [('label', OneHotEncoder(), [0])], remainder = 'passthrough')
+x = c_t.fit_transform(x)
+le = LabelEncoder()
+y = le.fit_transform(y)
+print(x)
+print(y)
+print()
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = .2, random_state = 1)
+print(x_train)
+print(y_train)
+print(x_test)
+print(y_test)
+print()
+sc = StandardScaler()
+x_train[:, 3:] = sc.fit_transform(x_train[:, 3:])
+x_test[:, 3:] = sc.transform(x_test[:, 3:])
+print(x_train)
+print(x_test)

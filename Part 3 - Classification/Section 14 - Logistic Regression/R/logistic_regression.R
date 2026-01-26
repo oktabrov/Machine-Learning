@@ -4,9 +4,6 @@
 dataset = read.csv('Social_Network_Ads.csv')
 dataset = dataset[3:5]
 
-# Encoding the target feature as factor
-dataset$Purchased = factor(dataset$Purchased, levels = c(0, 1))
-
 # Splitting the dataset into the Training set and Test set
 # install.packages('caTools')
 library(caTools)

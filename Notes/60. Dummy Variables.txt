@@ -1,0 +1,4 @@
+Two types of variables:
+ - Numerical
+ - Categorical
+We need to create dummy carriable to use both types of variables
